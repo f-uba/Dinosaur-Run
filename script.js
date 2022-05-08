@@ -1,11 +1,13 @@
 const dinosaur = document.querySelector('.dinosaur');
+let itsJumping = false;
 
 function HandleKeyUp(event){
-    if (event.keyCode === 32) Jump()
+    if (event.keyCode === 32 && !itsJumping) Jump()
 }
 
 function Jump(){
     let position = 0;
+    itsJumping = true;
 
     let upInterval = setInterval(() => {     
         if (position >= 150){
@@ -14,6 +16,7 @@ function Jump(){
             let downInterval = setInterval(() => {
                 if (position <= 0){
                     clearInterval(downInterval);
+                    itsJumping = false;
                 }
                 else {
                     position -= 20;
