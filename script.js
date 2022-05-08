@@ -1,4 +1,5 @@
 const dinosaur = document.querySelector('.dinosaur');
+const background = document.querySelector('.background');
 let itsJumping = false;
 
 function HandleKeyUp(event){
@@ -31,4 +32,13 @@ function Jump(){
     }, 20);
 }
 
+function CreateCactus(){
+    const cactus = document.createElement('div');
+
+    cactus.classList.add('cactus');
+    cactus.style.left = 1000 + 'px';
+    background.appendChild(cactus);
+}
+
+CreateCactus();
 document.addEventListener('keyup', HandleKeyUp)
