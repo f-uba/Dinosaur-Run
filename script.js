@@ -1,17 +1,17 @@
 const dinosaur = document.querySelector('.dinosaur');
 const background = document.querySelector('.background');
 let itsJumping = false;
+let position = 0;
 
 function HandleKeyDown(event){
     if (event.keyCode === 32 && !itsJumping) Jump()
 }
 
 function Jump(){
-    let position = 0;
     itsJumping = true;
 
     let upInterval = setInterval(() => {     
-        if (position >= 150) {
+        if (position >= 200) {
             clearInterval(upInterval);
 
             let downInterval = setInterval(() => {
@@ -46,7 +46,10 @@ function CreateCactus(){
             clearInterval(leftInterval);
             background.removeChild(cactus);
         }
-        else{
+        else if (cactusPosition > 0 && cactusPosition < 60 && position < 60) {
+            clearInterval(leftInterval);
+            document.body.innerHTML =  '<h1 class="gameOver">Fim de jogo</h1>';
+        } else {
             cactusPosition -= 10;
             cactus.style.left = cactusPosition + 'px';
         }
